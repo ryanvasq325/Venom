@@ -1,5 +1,5 @@
 {
-    "name": "deskivo",
+    "name": "venom",
     "version": "1.0.0",
     "main": "app/renderer/main/index.js",
     "type": "module",
