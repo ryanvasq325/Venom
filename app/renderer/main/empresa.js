@@ -9,9 +9,7 @@ saveButton.addEventListener('click', async () => {
     try {
         const result = await window.electronAPI.saveCompany(data);
         console.log('Empresa salva com sucesso:', result);
-        alert('Empresa salva com sucesso!');
     } catch (error) {
         console.error('Erro ao salvar empresa:', error);
-        alert('Erro ao salvar empresa!');
     }
 });
