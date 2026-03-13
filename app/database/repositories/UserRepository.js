@@ -9,7 +9,7 @@ export default class UserRepository {
         try {
             const result = await db.insert(users).values({
                 name: data.name,
-                price: data.price
+                email: data.email
             }).returning();
             return result[0];
         } finally {

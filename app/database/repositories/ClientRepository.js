@@ -9,7 +9,7 @@ export default class ClientRepository {
         try {
             const result = await db.insert(clients).values({
                 name: data.name,
-                price: data.price
+                cpf: data.cpf
             }).returning();
             return result[0];
         } finally {

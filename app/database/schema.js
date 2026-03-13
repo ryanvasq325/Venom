@@ -8,7 +8,7 @@ export const products = pgTable("products", {
 export const clients = pgTable("clients", {
     id: serial("id").primaryKey(),
     name: text("name").notNull(),
-    cpf: text("cpf").notNull(),
+    cpf: text("cpf").notNull()
 });
 export const users = pgTable("users", {
     id: serial("id").primaryKey(),

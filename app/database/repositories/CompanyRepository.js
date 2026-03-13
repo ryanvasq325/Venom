@@ -9,7 +9,7 @@ export default class CompanyRepository {
         try {
             const result = await db.insert(company).values({
                 name: data.name,
-                price: data.price
+                email: data.email
             }).returning();
             return result[0];
         } finally {
