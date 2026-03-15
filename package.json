@@ -1,37 +1,54 @@
 {
-    "name": "venom",
-    "version": "1.0.0",
-    "main": "app/renderer/main/index.js",
-    "type": "module",
-    "private": true,
-    "scripts": {
-        "start": "electron .",
-        "build": "electron-builder"
-    },
-    "devDependencies": {
-        "drizzle-kit": "^0.31.9",
-        "electron": "^40.7.0",
-        "electron-builder": "^26.8.1"
-    },
-    "dependencies": {
-        "dotenv": "^17.3.1",
-        "drizzle-orm": "^0.45.1",
-        "pg": "^8.20.0"
-    },
-    "build": {
-        "appId": "venom-app",
-        "productName": "Venom",
-        "directories": {
-            "output": "C:\\Venom"
-        }
+  "name": "venom",
+  "version": "1.0.0",
+  "main": "app/renderer/main/index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.9",
+    "electron": "^40.7.0",
+    "electron-builder": "^26.8.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^0.45.1",
+    "pg": "^8.20.0"
+  },
+  "build": {
+    "appId": "venom-app",
+    "productName": "Venom",
+    "directories": {
+      "output": "C://Venom"
     },
     "files": [
       "app/**/*",
-      "node_modules/*",
+      "node_modules/**/*",
       "package.json"
     ],
-    "asar": false,
+    "asar": true,
     "win": {
-        "target": "portable"
+      "target": [
+        "portable"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
     }
+  }
 }
