@@ -1,6 +1,3 @@
-import { Validate } from "./Validate.js";
-import { Requests } from "./Requests.js";
-
 const Action = document.getElementById("acao");
 const Id = document.getElementById("id");
 const insertItemButton = document.getElementById("insertItemButton");

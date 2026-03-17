@@ -68,7 +68,7 @@ body {
    ============================================ */
 .sidebar {
     width: var(--sidebar-width);
-    background: linear-gradient(165deg, #3711a1 0%, #1d0736 50%, #1B3570 100%);
+    background: linear-gradient(165deg, #131313 0%, #1d0736 50%, #1B3570 100%);
     color: var(--white);
     display: flex;
     flex-direction: column;
