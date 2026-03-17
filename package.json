@@ -1,54 +1,74 @@
 {
-  "name": "venom",
-  "version": "1.0.0",
-  "main": "app/renderer/main/index.js",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "start": "electron .",
-    "build": "electron-builder",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^0.31.9",
-    "electron": "^40.7.0",
-    "electron-builder": "^26.8.1"
-  },
-  "dependencies": {
-    "dotenv": "^17.3.1",
-    "drizzle-orm": "^0.45.1",
-    "pg": "^8.20.0"
-  },
-  "build": {
-    "appId": "venom-app",
-    "productName": "Venom",
-    "directories": {
-      "output": "C://Venom"
+    "name": "venom",
+    "version": "1.0.0",
+    "main": "app/renderer/main/index.js",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "start": "electron .",
+        "build:win": "electron-builder --win",
+        "build:linux": "electron-builder --linux",
+        "build:all": "electron-builder --win --linux"
     },
-    "files": [
-      "app/**/*",
-      "node_modules/**/*",
-      "package.json"
-    ],
-    "asar": true,
-    "win": {
-      "target": [
-        "portable"
-      ]
+    "build": {
+        "appId": "com.venom.app",
+        "productName": "Venom",
+        "copyright": "Venudo 2024",
+        "directories": {
+            "output": "C:\\Venom"
+        },
+        "files": [
+            "app/**/*",
+            "node_modules/**/*",
+            "package.json",
+            ".env"
+        ],
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ]
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true,
+            "shortcutName": "Deskivo"
+        },
+        "linux": {
+            "target": [
+                {
+                    "target": "AppImage",
+                    "arch": [
+                        "x64"
+                    ]
+                },
+                {
+                    "target": "deb",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ],
+            "icon": "app/assets/icon.png",
+            "category": "Office"
+        },
+        "electronVersion": "40.7.0"
     },
-    "mac": {
-      "target": [
-        "dmg",
-        "zip"
-      ]
+    "devDependencies": {
+        "drizzle-kit": "^0.31.9",
+        "electron": "^40.7.0",
+        "electron-builder": "^25.1.8"
     },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ]
+    "dependencies": {
+        "dotenv": "^17.3.1",
+        "drizzle-orm": "^0.45.1",
+        "pg": "^8.20.0",
+        "postgres": "^3.4.8"
     }
-  }
 }

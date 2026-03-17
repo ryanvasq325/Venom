@@ -1,3 +1,7 @@
+let table = new DataTable('#tabela', {
+    responsive: true,
+});
+
 const voltarButton = document.getElementById('voltar-button');
 const cadastroButton = document.getElementById('cadastro-button');
 
