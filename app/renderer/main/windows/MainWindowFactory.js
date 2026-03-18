@@ -52,6 +52,9 @@ export default class MainWindowFactory {
         ipcMain.handle('product:save', async (_event, productData) => {
             return await ProductRepository.insert(productData);
         });
+        ipcMain.handle('product:search', async (_event, data) => {
+            return await ProductRepository.search(data);
+        });
         ipcMain.handle('client:save', async (_event, clientData) => {
             return await ClientRepository.insert(clientData);
         });
