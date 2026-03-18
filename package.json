@@ -20,13 +20,8 @@
         "files": [
             "app/**/*",
             "node_modules/**/*",
-            "package.json"
-        ],
-        "extraFiles": [
-            {
-                "from": ".env",
-                "to": ".env"
-            }
+            "package.json",
+            ".env"
         ],
         "win": {
             "target": [
@@ -43,7 +38,7 @@
             "allowToChangeInstallationDirectory": true,
             "createDesktopShortcut": true,
             "createStartMenuShortcut": true,
-            "shortcutName": "Venudo"
+            "shortcutName": "Deskivo"
         },
         "linux": {
             "target": [
