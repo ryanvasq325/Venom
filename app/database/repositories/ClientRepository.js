@@ -39,7 +39,7 @@ export default class ClientRepository {
                     .select()
                     .from(clients)
                     .where(whereClause)
-                    .orderBy(asc(clients.name))
+                    .orderBy(asc(clients.name, clients.id, clients.cpf))
                     .offset(data?.offset)
                     .limit(data?.limit);
     

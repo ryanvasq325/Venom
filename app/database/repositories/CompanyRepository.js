@@ -39,7 +39,7 @@ export default class CompanyRepository {
                         .select()
                         .from(company)
                         .where(whereClause)
-                        .orderBy(asc(company.name,company.cnpj))
+                        .orderBy(asc(company.name,company.id,company.cnpj))
                         .offset(data?.offset)
                         .limit(data?.limit);
         

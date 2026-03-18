@@ -39,7 +39,7 @@ export default class UserRepository {
                         .select()
                         .from(users)
                         .where(whereClause)
-                        .orderBy(asc(users.name,users.email))
+                        .orderBy(asc(users.name, users.id, users.email))
                         .offset(data?.offset)
                         .limit(data?.limit);
         

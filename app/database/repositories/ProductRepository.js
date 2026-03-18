@@ -39,7 +39,7 @@ export default class ProductRepository {
                 .select()
                 .from(products)
                 .where(whereClause)
-                .orderBy(asc(products.name))
+                .orderBy(asc(products.name, products.id, products.price))
                 .offset(data?.offset)
                 .limit(data?.limit);
 
