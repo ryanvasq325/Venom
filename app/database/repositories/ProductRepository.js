@@ -1,4 +1,5 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
+import { ilike, or, sql, asc } from 'drizzle-orm';
 import Connection from '../Connection.js';
 import { products } from '../schema.js';
 
@@ -17,46 +18,37 @@ export default class ProductRepository {
         }
     }
     static async search(data) {
-       const rawSearch = String(data?.term ?? '').trim();
-       const terms = `%${data?.term}%`;
-       try {
-           const client = await Connection.connect();
-           const db = drizzle(client);
-        const whereClause = rawSearch !== ''
-        ? or (
-            sql``
-        )
-       }
+        //Captura o termo de pesquisa sem o %%
+        const rawSearch = String(data?.term ?? '').trim();
+        //Captura o termo da pesquisa já aplicando o %%
+        const terms = `%${data?.term}%`;
+        try {
+            //Abre a conexão com banco de dados
+            const client = await Connection.connect();
+            const db = drizzle(client);
+            const whereClause =
+                rawSearch !== ''
+                    ? or(
+                        sql`${products.id}::text ILIKE ${terms}`,
+                        ilike(products.name, terms),
+                        sql`${products.price}::text ILIKE ${terms}`
+                    )
+                    : undefined;
 
-
-
-
-
-
-            // Dados da página
-            const data = await db
+            const result = await db
                 .select()
                 .from(products)
-                .where(sql`
-                    name     ILIKE ${term}
-                    OR category ILIKE ${term}
-                `)
-                .limit(length)
-                .offset(start)
-                .orderBy(products.name);
+                .where(whereClause)
+                .orderBy(asc(products.name))
+                .offset(data?.offset)
+                .limit(data?.limit);
 
             return {
-                draw,
-                recordsTotal,
-                recordsFiltered,
-                data,
+                data: result
             };
-
         } catch (error) {
             console.error('[ProductRepository] Erro na busca:', error.message);
-
             return {
-                draw,
                 recordsTotal: 0,
                 recordsFiltered: 0,
                 data: [],
