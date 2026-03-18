@@ -3,7 +3,7 @@ const saveButton = document.getElementById('save-button');
 saveButton.addEventListener('click', async () => {
     const data = {
         name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
+        cnpj: document.getElementById('cnpj').value,
     };
 
     try {
